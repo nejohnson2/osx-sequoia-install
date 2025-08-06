@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo " hi"
 echo "root permissions are required for a few commands, asking upfront"
 sudo -v
@@ -6,6 +8,24 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # exit if anything fails
 set -e
+
+# Check if Command Line Tools are installed
+if ! xcode-select -p &>/dev/null; then
+  echo "Command Line Tools not found. Installing..."
+
+  # This command triggers the software update prompt for CLT
+  xcode-select --install
+
+  # Wait until the installation is done
+  echo "Waiting for Command Line Tools installation to complete..."
+  until xcode-select -p &>/dev/null; do
+    sleep 5
+  done
+
+  echo "Command Line Tools installed successfully."
+else
+  echo "Command Line Tools already installed."
+fi
 
 name="codex" 
 echo "Set computer name to $name"; {
