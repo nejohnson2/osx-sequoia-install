@@ -64,5 +64,18 @@ mkdir ~/Pictures/Screenshots
 defaults write com.apple.screencapture "location" -string "~/Pictures/Screenshots"
 defaults write com.apple.screencapture "show-thumbnail" -bool "false"
 
+# Disable the “Are you sure you want to open this application?” dialog
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+# Show all filename extensions in Finder
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Allow text selection in Quick Look
+defaults write com.apple.finder QLEnableTextSelection -bool true
+
+# Show Finder Pathbar
+defaults write com.apple.finder ShowPathbar -bool true
+
+
 for app in Finder Dock SystemUIServer cfprefsd; do killall "$app" > /dev/null 2>&1; done
 echo "Done.  Tap to click, and scroll to zoom require a restart"
