@@ -25,3 +25,5 @@ git config --global user.email "nejohnson2@gmail.com"
 #ssh-add --apple-use-keychain ~/.ssh/id_ed25519
 # copy your key to github
 # pbcopy < ~/.ssh/id_ed25519.pub
+# Test connection
+# ssh -T git@github.com
