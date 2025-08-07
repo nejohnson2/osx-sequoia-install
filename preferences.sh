@@ -9,6 +9,11 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # exit if anything fails
 set -e
 
+# Set Terminal Preferences
+touch ~/.zshrc
+echo "PROMPT='%m : '" >> ~/.zshrc
+echo "export CLICOLOR=1" >> ~/.zshrc
+
 # Check if Command Line Tools are installed
 if ! xcode-select -p &>/dev/null; then
   echo "Command Line Tools not found. Installing..."
