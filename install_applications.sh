@@ -10,4 +10,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 brew install git
 brew install python
 
-brew cask install
+brew install --cask google-chrome
+brew install --cask lastpass
+brew install --cask chatgpt
+brew install --cask visual-studio-code
