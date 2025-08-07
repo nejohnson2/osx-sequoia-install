@@ -11,8 +11,10 @@ set -e
 
 # Set Terminal Preferences
 touch ~/.zshrc
+echo "alias python=\"python3\"" >> ~/.zshrc
 echo "PROMPT='%m : '" >> ~/.zshrc
 echo "export CLICOLOR=1" >> ~/.zshrc
+echo "export PATH=\"/opt/homebrew/bin:$PATH\""
 
 # Check if Command Line Tools are installed
 if ! xcode-select -p &>/dev/null; then
