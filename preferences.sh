@@ -49,5 +49,8 @@ defaults write com.apple.dock tilesize -int 1
 # Allow text selection in Quick Look
 defaults write com.apple.finder QLEnableTextSelection -bool true
 
+# Show all filename extensions in Finder
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
 for app in Finder Dock SystemUIServer cfprefsd; do killall "$app" > /dev/null 2>&1; done
 echo "Done.  Tap to click, and scroll to zoom require a restart"
