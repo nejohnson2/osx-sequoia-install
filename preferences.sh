@@ -57,5 +57,10 @@ defaults write com.apple.finder QLEnableTextSelection -bool true
 # Show all filename extensions in Finder
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
+# Save screenshots to a seperate folder and dont show thumbnail
+mkdir ~/Pictures/Screenshots
+defaults write com.apple.screencapture "location" -string "~/Pictures/Screenshots"
+defaults write com.apple.screencapture "show-thumbnail" -bool "false"
+
 for app in Finder Dock SystemUIServer cfprefsd; do killall "$app" > /dev/null 2>&1; done
 echo "Done.  Tap to click, and scroll to zoom require a restart"
