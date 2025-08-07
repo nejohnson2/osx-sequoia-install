@@ -76,6 +76,9 @@ defaults write com.apple.finder QLEnableTextSelection -bool true
 # Show Finder Pathbar
 defaults write com.apple.finder ShowPathbar -bool true
 
+# Beep feedback when changing volume
+defaults write NSGlobalDomain com.apple.sound.beep.feedback -integer 1
+
 
 for app in Finder Dock SystemUIServer cfprefsd; do killall "$app" > /dev/null 2>&1; done
 echo "Done.  Tap to click, and scroll to zoom require a restart"
