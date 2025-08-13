@@ -3,6 +3,7 @@
 echo " hi"
 echo "root permissions are required for a few commands, asking upfront"
 sudo -v
+
 # Keep-alive: update existing `sudo` time stamp until this script has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
@@ -15,7 +16,7 @@ echo "alias python='python3'" >> ~/.zshrc
 echo "alias pip='pip3'" >> ~/.zshrc
 echo "PROMPT='%m : '" >> ~/.zshrc
 echo "export CLICOLOR=1" >> ~/.zshrc
-echo "export PATH=\"/opt/homebrew/bin:$PATH\""
+echo "export PATH=\"/opt/homebrew/bin:$PATH\"" >> ~/.zshrc
 
 # Check if Command Line Tools are installed
 if ! xcode-select -p &>/dev/null; then
