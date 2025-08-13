@@ -73,6 +73,9 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 # Beep feedback when changing volume
 defaults write NSGlobalDomain com.apple.sound.beep.feedback -integer 1
 
+# Disable “natural” (Lion-style) scrolling
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+
 sleep 1
 
 # Restart applications
