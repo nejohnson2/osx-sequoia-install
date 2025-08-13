@@ -38,13 +38,15 @@ fi
 
 name="codex" 
 echo "Set computer name to $name"; {
-  [[ "$(scutil --get ComputerName)" == "$name" ]] || scutil --set ComputerName $name
-  [[ "$(scutil --get LocalHostName)" == "$name" ]] || scutil --set LocalHostName $name
+  [[ "$(scutil --get ComputerName)" == "$name" ]] || sudo scutil --set ComputerName "$name"
+  [[ "$(scutil --get LocalHostName)" == "$name" ]] || sudo scutil --set LocalHostName "$name"
 }
 
 echo "Enable tap to click"
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1
+defualts write com.AppleMultitouchTrackpad Clicking -int 1
 
+# -- Doc customization --
 # remove default apps from the doc
 defaults write com.apple.dock persistent-apps -array ""
 
@@ -52,35 +54,28 @@ defaults write com.apple.dock persistent-apps -array ""
 defaults write com.apple.dock autohide -bool true
 
 # make the dock as small as possible
-defaults write com.apple.dock tilesize -int 1
+defaults write com.apple.dock tilesize -int 16
 # defaults write com.apple.dock tilesize -int 64
 
-# Allow text selection in Quick Look
-defaults write com.apple.finder QLEnableTextSelection -bool true
+# Show Finder Pathbar
+defaults write com.apple.finder ShowPathbar -bool true
 
 # Show all filename extensions in Finder
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+#defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 # Save screenshots to a seperate folder and dont show thumbnail
-mkdir ~/Pictures/Screenshots
-defaults write com.apple.screencapture "location" -string "~/Pictures/Screenshots"
+mkdir -p "$HOME/Pictures/Screenshots"
+defaults write com.apple.screencapture "location" -string "$HOME/Pictures/Screenshots"
 defaults write com.apple.screencapture "show-thumbnail" -bool "false"
 
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-# Show all filename extensions in Finder
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-
-# Allow text selection in Quick Look
-defaults write com.apple.finder QLEnableTextSelection -bool true
-
-# Show Finder Pathbar
-defaults write com.apple.finder ShowPathbar -bool true
-
 # Beep feedback when changing volume
 defaults write NSGlobalDomain com.apple.sound.beep.feedback -integer 1
 
+sleep 1
 
+# Restart applications
 for app in Finder Dock SystemUIServer cfprefsd; do killall "$app" > /dev/null 2>&1; done
 echo "Done.  Tap to click, and scroll to zoom require a restart"
