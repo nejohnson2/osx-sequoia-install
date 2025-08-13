@@ -44,7 +44,6 @@ echo "Set computer name to $name"; {
 
 echo "Enable tap to click"
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1
-defualts write com.AppleMultitouchTrackpad Clicking -int 1
 
 # -- Doc customization --
 # remove default apps from the doc
