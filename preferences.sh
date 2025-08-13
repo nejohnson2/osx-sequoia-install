@@ -40,6 +40,7 @@ name="codex"
 echo "Set computer name to $name"; {
   [[ "$(scutil --get ComputerName)" == "$name" ]] || sudo scutil --set ComputerName "$name"
   [[ "$(scutil --get LocalHostName)" == "$name" ]] || sudo scutil --set LocalHostName "$name"
+  [[ "$(scutil --get HostName)" == "$name" ]] || sudo scutil --set HostName "$name"
 }
 
 echo "Enable tap to click"
